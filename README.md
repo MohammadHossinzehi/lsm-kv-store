@@ -16,7 +16,7 @@ LSM trees power LevelDB, RocksDB, Cassandra and many other write-heavy databases
 
 ## Usage
 
-`python
+```python
 from lsmkv import DB
 
 db = DB("./data", memtable_limit=4096, compact_threshold=4)
@@ -27,22 +27,22 @@ print(db.get("user:1"))                  # b'ada'
 print(list(db.scan("user:", "user:~")))  # [(b'user:1', b'ada')]
 print(db.stats())
 db.close()
-`
+```
 
 CLI:
 
-`
+```
 python -m lsmkv ./data put name ada
 python -m lsmkv ./data get name
 python -m lsmkv ./data scan
 python -m lsmkv ./data stats
-`
+```
 
 ## Run the tests
 
-`
+```
 python -m unittest tests.test_lsm -v
-`
+```
 
 ## Design notes
 
@@ -54,11 +54,11 @@ python -m unittest tests.test_lsm -v
 
 ## Layout
 
-`
+```
 lsmkv/bloom.py     Bloom filter
 lsmkv/wal.py       write-ahead log
 lsmkv/sstable.py   SSTable writer and reader
 lsmkv/db.py        memtable, flush, compaction, scans
 lsmkv/__main__.py  CLI
 tests/test_lsm.py  tests
-`
+```
